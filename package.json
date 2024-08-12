@@ -1,7 +1,18 @@
 {
   "name": "notion-clone",
   "version": "0.1.0",
+  "description": "A Notion clone built with Next.js, TypeScript, Tailwind CSS, and Radix UI.",
+  "author": "Louis Xie <bfgh2678@gmail.com>",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/louisxie0830/notion-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/louisxie0830/notion-clone/issues"
+  },
+  "homepage": "https://github.com/louisxie0830/notion-clone#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
