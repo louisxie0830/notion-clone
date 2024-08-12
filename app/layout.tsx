@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ConvexClientProvider } from "@/components/providers/convex-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+/**
+ * Metadata for the Notion Clone application.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = {
   title: "Notion Clone",
-  description: "The connected works[ace where better, faster work happens.",
+  description: "The connected workspace where better, faster work happens.",
   icons: {
     icon: [
       {
@@ -23,14 +29,28 @@ export const metadata: Metadata = {
   }
 };
 
+
+/**
+ * Root layout component that wraps the application with necessary providers.
+ *
+ * @param {Object} props - The properties object.
+ * @param {React.ReactNode} props.children - The child components to be rendered inside the layout.
+ * @returns {JSX.Element} The root layout component with providers.
+ */
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ConvexClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="notion-clone-theme">
+            { children }
+          </ThemeProvider>
+        </ConvexClientProvider>
+      </body>
     </html>
   );
 }
